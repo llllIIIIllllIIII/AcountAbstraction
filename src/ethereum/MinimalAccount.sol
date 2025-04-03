@@ -11,7 +11,6 @@ import {SIG_VALIDATION_FAILED, SIG_VALIDATION_SUCCESS} from "lib/account-abstrac
 import {IEntryPoint} from "lib/account-abstraction/contracts/interfaces/IEntryPoint.sol";
 
 contract MinimalAccount is IAccount, Ownable{
-
 //Errors
 
     error MinimalAccount__NotFromEntryPoint();
@@ -56,7 +55,7 @@ contract MinimalAccount is IAccount, Ownable{
     {
         (bool success, bytes memory result) = dest.call{value : value}(functionData);
         if (!success) {
-            revert(MinimalAccount__CallFailed(result));
+            revert MinimalAccount__CallFailed(result);
         }
     }
 
